@@ -25,3 +25,24 @@
 ├── pyproject.toml       # 프로젝트 설정 및 의존성 관리 (uv 기반)
 └── uv.lock              # 의존성 버전 고정 파일
 ```
+
+## 🚀 시작하기 & 빌드 방법
+
+본 프로젝트는 `uv` 패키지 매니저를 사용합니다. 아래 명령어를 복사하여 터미널에 입력하세요.
+
+### 1. 개발 환경 설정 및 실행
+
+```powershell
+# 의존성 설치 (최초 1회)
+uv sync
+
+# GUI 프로그램 실행
+uv run python gui.py
+```
+
+### 2. 단일 실행 파일(.exe) 제작
+
+```powershell
+# PyInstaller를 이용한 빌드
+uv run pyinstaller --onefile --noconsole --collect-all customtkinter --name "한글이미지추출기" gui.py
+```
