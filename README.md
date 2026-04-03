@@ -1,4 +1,4 @@
-# 📑 HWP/HWPX 문서 이미지 자동 추출기 (Docs Images Extractor)
+# 📑 HWP/HWPX 문서 이미지 자동 추출기
 
 한글 문서(`.hwp`, `.hwpx`) 내부에 포함된 이미지 파일들을 자동으로 추출하여 파일별로 분류해주는 파이썬 도구입니다.
 
@@ -11,11 +11,14 @@
 
 ## 📂 프로젝트 구조
 
+```text
+.
 ├── core/
-│ ├── hwp_parser.py # HWP 파일 분석 및 이미지 추출
-│ ├── hwpx_parser.py # HWPX 파일 분석 및 이미지 추출
-│ └── processor.py # 전체 작업 흐름 관리 (스캔/분류)
-├── input_docs/ # (Input) 추출할 한글 문서를 넣는 곳
-├── output_images/ # (Output) 추출된 이미지가 저장되는 곳
-├── main.py # 프로그램 실행 진입점
-└── pyproject.toml # 프로젝트 설정 및 의존성 관리
+│   ├── hwp_parser.py    # HWP 파일 분석 및 이미지 추출
+│   ├── hwpx_parser.py   # HWPX 파일 분석 및 이미지 추출
+│   └── processor.py     # 전체 작업 흐름 관리 (스캔/분류)
+├── input_docs/          # (Input) 추출할 한글 문서를 넣는 곳
+├── output_images/       # (Output) 추출된 이미지가 저장되는 곳
+├── main.py              # 프로그램 실행 진입점
+└── pyproject.toml       # 프로젝트 설정 및 의존성 관리
+```
