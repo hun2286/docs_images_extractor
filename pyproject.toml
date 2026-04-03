@@ -1,0 +1,9 @@
+[project]
+name = "docs-images-extractor"
+version = "0.1.0"
+description = "Extract images from HWP and HWPX files"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "olefile>=0.47",
+]
