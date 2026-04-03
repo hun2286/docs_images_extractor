@@ -5,5 +5,6 @@ description = "Extract images from HWP and HWPX files"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "customtkinter>=5.2.2",
     "olefile>=0.47",
 ]
