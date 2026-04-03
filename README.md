@@ -18,7 +18,8 @@
 .
 ├── core/
 │   ├── hwp_parser.py    # HWP(OLE) 분석 및 이미지 추출 핵심 로직
-│   └── hwpx_parser.py   # HWPX(XML/ZIP) 분석 및 이미지 추출 핵심 로직
+│   ├── hwpx_parser.py   # HWPX(XML/ZIP) 분석 및 이미지 추출 핵심 로직
+│   └── processor.py     # 추출 프로세스 제어 및 파일 분류 로직
 ├── gui.py               # 메인 GUI 프로그램 (CustomTkinter 기반)
 ├── main.py              # 터미널 기반 실행 진입점 (CLI용)
 ├── memo.txt             # 빌드 가이드 및 개발 노트
