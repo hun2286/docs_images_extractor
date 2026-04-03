@@ -8,3 +8,8 @@ dependencies = [
     "customtkinter>=5.2.2",
     "olefile>=0.47",
 ]
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.19.0",
+]
