@@ -54,7 +54,7 @@ class App(ctk.CTk):
             text="🚀 이미지 추출 시작",
             fg_color="#2ecc71",
             hover_color="#27ae60",
-            font=("나눔고딕", 16, "bold"),
+            font=("나눔고딕", 13, "bold"),
             command=self.run_extraction,
         )
         self.btn_run.pack(pady=20)
@@ -66,14 +66,18 @@ class App(ctk.CTk):
         self.selected_items = []
         self.mode = ""  # "file" 또는 "folder"
 
+    # 파일 선택
     def select_files(self):
         files = filedialog.askopenfilenames(filetypes=[("한글 문서", "*.hwp *.hwpx")])
         if files:
             self.selected_items = list(files)
             self.mode = "file"
+            # 선택 파일 경로 보여주기
             self.update_display()
 
+    # 폴더 선택
     def select_folder(self):
+        # 폴더 고르는 창 띄우기
         folder = filedialog.askdirectory()
         if folder:
             self.selected_items = [folder]
@@ -85,11 +89,13 @@ class App(ctk.CTk):
         text = "\n".join(self.selected_items)
         self.path_display.insert("0.0", text)
 
+    # 로그 찍기
     def write_log(self, message):
         self.log_box.insert("end", message + "\n")
         self.log_box.see("end")
         self.update()
 
+    # 초기화
     def reset_all(self):
         self.selected_items = []
         self.mode = ""
@@ -98,6 +104,7 @@ class App(ctk.CTk):
         self.log_box.delete("1.0", "end")
         self.write_log("🧹 모든 설정이 초기화되었습니다.")
 
+    # 추출 로직
     def run_extraction(self):
         if not self.selected_items:
             self.write_log("⚠️ 먼저 파일이나 폴더를 선택해주세요!")
@@ -144,6 +151,8 @@ class App(ctk.CTk):
         except Exception as e:
             self.write_log(f"❌ 에러 발생: {e}")
 
+    # 이하 작업 수행 함수
+    # 이미지 추출 함수
     def extract_to_fixed_dir(self, file_path, target_dir):
         """지정된 폴더에 직접 이미지 추출 (이중 폴더 방지용)"""
         file_name = os.path.basename(file_path)
@@ -156,6 +165,7 @@ class App(ctk.CTk):
             res = extract_images_from_hwpx(file_path, target_dir)
         self.write_log(f"   ㄴ 완료! ({len(res)}개 저장)")
 
+    # 파일별 폴더 생성
     def extract_single_file(self, file_path, parent_output_dir):
         """상위 폴더 내에 파일명 폴더를 만들고 추출"""
         file_name = os.path.basename(file_path)
@@ -164,6 +174,7 @@ class App(ctk.CTk):
         os.makedirs(target_dir, exist_ok=True)
         self.extract_to_fixed_dir(file_path, target_dir)
 
+    # 폴더안의 모든 파일 탐색
     def process_custom_folder(self, input_dir, output_dir):
         """폴더 내 한글 파일들 스캔 및 추출"""
         files = glob.glob(os.path.join(input_dir, "*.hwp")) + glob.glob(os.path.join(input_dir, "*.hwpx"))

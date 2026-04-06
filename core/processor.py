@@ -1,4 +1,6 @@
 import os
+
+# 확장자 골라내는 파일 검색기
 import glob
 from core.hwp_parser import extract_images_from_hwp
 from core.hwpx_parser import extract_images_from_hwpx
@@ -7,7 +9,7 @@ from core.hwpx_parser import extract_images_from_hwpx
 def process_all_files(input_dir):
     """폴더를 스캔하여 파일별로 이미지를 추출하고 분류함"""
 
-    # input_docs 폴더 체크 및 생성
+    # input_docs 폴더 체크 및 생성 (없으면 폴더 새로 생성)
     if not os.path.exists(input_dir):
         os.makedirs(input_dir)
         print(f"'{input_dir}' 폴더가 없어 새로 생성했습니다. 문서를 넣어주세요.")
@@ -24,7 +26,9 @@ def process_all_files(input_dir):
 
     for file_path in files:
         file_name = os.path.basename(file_path)
+        # 확장자 제외 이름 추출
         name_only = os.path.splitext(file_name)[0]
+        # 확장자 종류 판별 준비
         ext = os.path.splitext(file_name)[1].lower()
 
         # 결과 저장 폴더: output_images/[파일명]
