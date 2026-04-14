@@ -66,7 +66,7 @@ class App(ctk.CTk):
         self.selected_items = []
         self.mode = ""  # "file" 또는 "folder"
 
-    # 파일 선택
+    # 파일 선택(한글 문서)
     def select_files(self):
         files = filedialog.askopenfilenames(filetypes=[("한글 문서", "*.hwp *.hwpx")])
         if files:
