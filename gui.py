@@ -134,7 +134,7 @@ class App(ctk.CTk):
 
             else:
                 if len(self.selected_items) == 1:
-                    # 파일 1개 선택 시: [파일명]_이미지 (이중 폴더 방지)
+                    # 파일 1개 선택 시: [파일명]_이미지 (이중 폴더 방지용 코드)
                     name_only = os.path.splitext(os.path.basename(first_item))[0]
                     main_output_dir = os.path.join(base_path, f"{name_only}_이미지")
                     os.makedirs(main_output_dir, exist_ok=True)
